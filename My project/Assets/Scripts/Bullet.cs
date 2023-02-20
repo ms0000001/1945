@@ -9,5 +9,9 @@ public class Bullet : MonoBehaviour
         {
             gameObject.SetActive(false);            
         }
+        if(other.tag == "Enemy")
+        {
+            gameObject.SetActive(false);            
+        }
     }
 }

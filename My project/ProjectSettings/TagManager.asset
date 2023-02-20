@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Net
   - BulletNet
+  - Enemy
+  - Bullet
+  - EnemyNet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
