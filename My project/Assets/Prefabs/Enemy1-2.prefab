@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4086999513349586913}
   - component: {fileID: 4086999513349586912}
   - component: {fileID: 3690354280753942061}
+  - component: {fileID: 4407348677493183765}
   m_Layer: 5
   m_Name: Enemy1-2
   m_TagString: Enemy
@@ -69,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -36498860, guid: acba9738857da1047983e43dd0b081e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -135,3 +136,23 @@ MonoBehaviour:
   gameObjects: []
   point: {fileID: 4086999513349586919}
   parents: {fileID: 4086999513349586918}
+--- !u!95 &4407348677493183765
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086999513349586918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f85c09dc6d76c364da835ca381a24258, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0

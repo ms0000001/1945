@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -759786664, guid: ec0a43b43022b1b488e0de0242523535, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,6 +90,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839ee078d38acfe4cae6bd40667c77e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot_P: {fileID: 0}
+  pos3: {fileID: 0}
+  speed: 0
 --- !u!61 &4771184294945468763
 BoxCollider2D:
   m_ObjectHideFlags: 0

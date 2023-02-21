@@ -4,40 +4,41 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour
 {
-    public GameObject S_point;
+    public GameObject shoot_P;
     public RectTransform pos3;
     private RectTransform enemy_obj = default;
     public float speed;
+    public static bool isDead =false;
     int cnt = 0;
+
     void Start()
     {
         enemy_obj = gameObject.GetComponent<RectTransform>();
-        S_point = GetComponent<GameObject>();
     }
     private void FixedUpdate() {
         enemy_obj.anchoredPosition = Vector3.MoveTowards(
             enemy_obj.anchoredPosition,
-            pos3.anchoredPosition,Time.deltaTime*speed*100);        
+            pos3.anchoredPosition,Time.deltaTime*speed*80);        
         
     }
 
     void Update()
     {
-        
-    }    
+        if(cnt > 0)
+        {
+            shoot_P.SetActive(true);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.tag == "Bullet")
         {
-            cnt++;
-            if(cnt > 1)
-            {
-                S_point.SetActive(true);
-            }
+            cnt++;            
             if(cnt == 10)
             {
                 gameObject.SetActive(false);
+                isDead = true;
             }
         }
     }  
