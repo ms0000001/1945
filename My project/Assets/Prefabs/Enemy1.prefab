@@ -136,7 +136,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6388477955138046858, guid: 52f1c1fb57920de4da5bdb4471431882, type: 3}
   gameObjects: []
   point: {fileID: 7349254852661543424}
-  parents: {fileID: 7349254852661543425}
+  parents: {fileID: 0}
 --- !u!212 &3849495423496856699
 SpriteRenderer:
   m_ObjectHideFlags: 0

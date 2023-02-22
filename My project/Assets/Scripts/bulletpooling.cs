@@ -26,14 +26,17 @@ public class bulletpooling : MonoBehaviour
     }
     void Shoot()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(GameManager.isPause==false)
         {
-            gameObjects[pivot].SetActive(true);
-            Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
-            rigid.AddForce(Vector2.up*10,ForceMode2D.Impulse);
-            gameObjects[pivot].transform.position = transform.position;
-            pivot++;
-            if (pivot == 20) pivot = 0;
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                gameObjects[pivot].SetActive(true);
+                Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
+                rigid.AddForce(Vector2.up*10,ForceMode2D.Impulse);
+                gameObjects[pivot].transform.position = transform.position;
+                pivot++;
+                if (pivot == 20) pivot = 0;
+            }
         }
     }
 }

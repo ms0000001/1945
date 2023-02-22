@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6b915650b3eadfe419bca0496d9cb31f
+guid: d4d018a927579c6428f8e6443af227f9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AnyConv.com__Item_Bomb2-removebg-preview_0
+      name: HpBar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 27
-        height: 16
+        x: 2
+        y: 27
+        width: 22
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d7e39859c28c124584aa2a402d40d01
-      internalID: -699191385
+      spriteID: 14c9bb8016efa604bab10b2ab975fab8
+      internalID: -1097779920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AnyConv.com__Item_Bomb2-removebg-preview_1
+      name: HpBar_1
       rect:
         serializedVersion: 2
-        x: 27
-        y: 0
-        width: 27
-        height: 16
+        x: 2
+        y: 22
+        width: 22
+        height: 3
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,29 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22bb807403ce8f647b7869b8064f8e51
-      internalID: 1857723089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: AnyConv.com__Item_Bomb2-removebg-preview_2
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 0
-        width: 27
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d23828abcc9a53446b26e65e6ecf25f2
-      internalID: -719559059
+      spriteID: a3efb47283c3a41488ea93f8d93731ee
+      internalID: 988306655
       vertices: []
       indices: 
       edges: []
@@ -190,9 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      AnyConv.com__Item_Bomb2-removebg-preview_0: -699191385
-      AnyConv.com__Item_Bomb2-removebg-preview_2: -719559059
-      AnyConv.com__Item_Bomb2-removebg-preview_1: 1857723089
+      HpBar_1: 988306655
+      HpBar_0: -1097779920
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

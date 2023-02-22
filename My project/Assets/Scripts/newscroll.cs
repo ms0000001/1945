@@ -7,7 +7,7 @@ public class newscroll : MonoBehaviour
     [SerializeField]
     private Transform target;
     [SerializeField]
-    private float scrollRange = 9.9f;
+    private float scrollRange = 9f;
     [SerializeField]
     private float moveSpeed = 3.0f;
     [SerializeField]

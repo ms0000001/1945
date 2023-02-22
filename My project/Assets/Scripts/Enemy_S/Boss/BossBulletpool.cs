@@ -29,7 +29,11 @@ public class BossBulletpool : MonoBehaviour
     {
         timer += Time.deltaTime;
         Shoot();
-        if(BossAct.cnt>60)
+        if(BossAct.cnt>60&&BossAct.cnt<85)
+        {
+            setTime =0.45f;
+        }
+        if(BossAct.cnt>85)
         {
             setTime =0.3f;
         }

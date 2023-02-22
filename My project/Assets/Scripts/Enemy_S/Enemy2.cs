@@ -13,6 +13,7 @@ public class Enemy2 : MonoBehaviour
 
     void Start()
     {
+        isDead =false;
         enemy_obj = gameObject.GetComponent<RectTransform>();
     }
     private void FixedUpdate() {
@@ -38,6 +39,7 @@ public class Enemy2 : MonoBehaviour
             if(cnt == 10)
             {
                 gameObject.SetActive(false);
+                GameManager.score_ += 1000;
                 isDead = true;
             }
         }

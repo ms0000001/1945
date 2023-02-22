@@ -33,7 +33,6 @@ public class BossAct : MonoBehaviour
         if(timer > setTime)
         {
             sp_.SetActive(true);
-            Debug.Log("?");
             setTime = 99999f;
         }
     }
@@ -50,6 +49,7 @@ public class BossAct : MonoBehaviour
             if(cnt == 100)
             {
                 Destroy(gameObject);
+                GameManager.score_ += 10000;
                 isDead = true;
             }
         }
