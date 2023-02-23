@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject mobDie;
     public RectTransform pos1;
     private RectTransform enemy_obj = default;
     public float speed;
@@ -22,15 +23,27 @@ public class Enemy : MonoBehaviour
         
     }
 
+    void Obj_False()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.tag == "Bullet")
         {
-            gameObject.SetActive(false);
+            mobDie.SetActive(true);
+            Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
             isDead = true;
         }
-        
+        if(other.tag == "bomb")
+        {
+            mobDie.SetActive(true);
+            Invoke("Obj_False",0.5f);
+            GameManager.score_ += 400;
+            isDead = true;
+        }
         if(other.tag == "EnemyNet")
         {
             gameObject.SetActive(false);

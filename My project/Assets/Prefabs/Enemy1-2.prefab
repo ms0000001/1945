@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1844597e7bc904ab2842c7a3d85193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mobDie: {fileID: 3237871780482706152, guid: 1b3c29e2447be2e4abb152e1bcc23127, type: 3}
   pos1: {fileID: 1990264486187920649, guid: 7aa469575f03eb244ae8053c139afaa8, type: 3}
   speed: 5
 --- !u!114 &3690354280753942061
@@ -135,7 +136,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6388477955138046858, guid: 52f1c1fb57920de4da5bdb4471431882, type: 3}
   gameObjects: []
   point: {fileID: 4086999513349586919}
-  parents: {fileID: 4086999513349586918}
+  parents: {fileID: 0}
 --- !u!95 &4407348677493183765
 Animator:
   serializedVersion: 5

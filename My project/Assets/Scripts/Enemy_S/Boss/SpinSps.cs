@@ -15,19 +15,19 @@ public class SpinSps : MonoBehaviour
     {   
         if(BossAct.cnt < 20)
         {
-            transform.Rotate(new Vector3 (0,0,1f));
+            transform.Rotate(new Vector3 (0,0,3f));
         }
         if(BossAct.cnt >= 20&&BossAct.cnt<40)
         {
-            transform.Rotate(new Vector3 (0,0,-1f));
+            transform.Rotate(new Vector3 (0,0,-2f));
         }
         if(BossAct.cnt >= 40&&BossAct.cnt<50)
         {
-            transform.Rotate(new Vector3 (0,0,3f));
+            transform.Rotate(new Vector3 (0,0,5f));
         }
         if(BossAct.cnt >= 50&&BossAct.cnt<60)
         {
-            transform.Rotate(new Vector3 (0,0,-3f));
+            transform.Rotate(new Vector3 (0,0,-6f));
         }
         if(BossAct.cnt >= 60&&BossAct.cnt<80)
         {

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject boomer;
     public Image hpbar;
     private Rigidbody2D playerRigidbody;
     public float speed;
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public bool isTouchRight;
     public static bool isDead;
 
+    public static int bombCnt;
+    private int maxBomb = 3;
+
     Animator animator;
 
     private void Awake() {
@@ -21,13 +25,15 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        bombCnt = 3;
         isDead = false;
-        playerRigidbody = GetComponent<Rigidbody2D>();      
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         Move();
+        AirStrike();
     }
 
     void Move()
@@ -55,7 +61,32 @@ public class PlayerController : MonoBehaviour
                 animator.SetInteger("Input",(int)X);
             }
         }
-    }   
+    }
+
+    void AirStrike()
+    {
+        gameObject.tag = "Player";
+        if(Boomer.isFlying == false)
+        {
+            if(0 < bombCnt && bombCnt <= maxBomb)
+            {
+                if(Input.GetKeyDown(KeyCode.B))
+                {
+                    Boomer.isFlying = true;
+                    bombCnt--;
+                    boomer.SetActive(true);
+                }
+            }
+        }
+        if(Boomer.isFlying == true)
+        {
+            gameObject.tag = "Hide";
+        }
+        if(bombCnt>maxBomb)
+        {
+            bombCnt = 3;
+        }
+    }
 
     public void Die()
     {
@@ -81,12 +112,15 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-        if(other.tag == "EnemyBullet")
+        if(gameObject.tag == "Player")
         {
-            hpbar.fillAmount -= 0.1f;
-            if(hpbar.fillAmount == 0)
+            if(other.tag == "EnemyBullet")
             {
-                Die();
+                hpbar.fillAmount -= 0.1f;
+                if(hpbar.fillAmount == 0)
+                {
+                    Die();
+                }
             }
         }
         

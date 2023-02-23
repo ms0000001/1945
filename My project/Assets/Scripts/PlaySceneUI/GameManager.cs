@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
             {
                 if(Input.GetKeyDown(KeyCode.R))
                 {
-                    Time.timeScale = 1;
                     SceneManager.LoadScene("02.PlayScene");
                 }
             }
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
         {
             isGameover = true;
             gameover.SetActive(true);
-            Time.timeScale = 0;
         }
     }
 

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy2 : MonoBehaviour
 {
+    Image hit;
     public GameObject shoot_P;
     public RectTransform pos3;
     private RectTransform enemy_obj = default;
@@ -14,6 +16,7 @@ public class Enemy2 : MonoBehaviour
     void Start()
     {
         isDead =false;
+        hit = GetComponent<Image>();
         enemy_obj = gameObject.GetComponent<RectTransform>();
     }
     private void FixedUpdate() {
@@ -31,17 +34,30 @@ public class Enemy2 : MonoBehaviour
         }
     }
 
+    void Hit()
+    {
+        hit.color = new Color(1,1,1,1);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.tag == "Bullet")
         {
-            cnt++;            
+            cnt++;
+            hit.color = new Color(1,0,0,1);
+            Invoke("Hit",0.05f);   
             if(cnt == 10)
             {
                 gameObject.SetActive(false);
                 GameManager.score_ += 1000;
                 isDead = true;
             }
+        }
+        if(other.tag == "bomb")
+        {
+            gameObject.SetActive(false);
+            GameManager.score_ += 1000;
+            isDead = true;
         }
     }  
 }

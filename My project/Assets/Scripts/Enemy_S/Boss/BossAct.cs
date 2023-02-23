@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossAct : MonoBehaviour
 {
+    Image hit;
     public static bool isDead = false;
     public RectTransform pos5;
     private RectTransform enemy_obj = default;
@@ -16,8 +18,10 @@ public class BossAct : MonoBehaviour
 
     void Start()
     {
+        cnt = 0;
         timer = 0;
         setTime = 12f;
+        hit = GetComponent<Image>();
         enemy_obj = gameObject.GetComponent<RectTransform>();
     }
     private void FixedUpdate() {
@@ -37,21 +41,41 @@ public class BossAct : MonoBehaviour
         }
     }
 
+    void Hit()
+    {
+        hit.color = new Color(1,1,1,1);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.tag == "Bullet")
         {
             cnt++;
+            hit.color = new Color(1,0,0,1);
+            Invoke("Hit",0.05f);
             if(cnt == 1)
             {
                 sp_.SetActive(true);
             }            
-            if(cnt == 100)
+            if(cnt > 100)
             {
                 Destroy(gameObject);
                 GameManager.score_ += 10000;
                 isDead = true;
             }
         }
+        if(other.tag == "bomb")
+        {
+            cnt += 40;
+            hit.color = new Color(1,0,0,1);
+            Invoke("Hit",1.5f);
+            if(cnt > 100)
+            {
+                Destroy(gameObject);
+                GameManager.score_ += 10000;
+                isDead = true;
+            }
+        }
+        
     }  
 }
