@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    BoxCollider2D boxCollider2D;
+    Image image;
     public GameObject mobDie;
     public RectTransform pos1;
     private RectTransform enemy_obj = default;
@@ -14,6 +17,10 @@ public class Enemy : MonoBehaviour
     {
         isDead = false;
         enemy_obj = gameObject.GetComponent<RectTransform>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        image = GetComponent<Image>();
+        boxCollider2D.enabled = true;
+        image.enabled = true;
     }
 
     private void FixedUpdate() {
@@ -32,6 +39,8 @@ public class Enemy : MonoBehaviour
         
         if(other.tag == "Bullet")
         {
+            boxCollider2D.enabled = false;
+            image.enabled = false;
             mobDie.SetActive(true);
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
@@ -39,6 +48,8 @@ public class Enemy : MonoBehaviour
         }
         if(other.tag == "bomb")
         {
+            boxCollider2D.enabled = false;
+            image.enabled = false;
             mobDie.SetActive(true);
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;

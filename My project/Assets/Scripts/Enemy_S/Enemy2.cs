@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Enemy2 : MonoBehaviour
 {
+    BoxCollider2D boxCollider2D;
+    Image image;
+    public GameObject mobDie;
     Image hit;
     public GameObject shoot_P;
     public RectTransform pos3;
@@ -18,6 +21,10 @@ public class Enemy2 : MonoBehaviour
         isDead =false;
         hit = GetComponent<Image>();
         enemy_obj = gameObject.GetComponent<RectTransform>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        image = GetComponent<Image>();
+        boxCollider2D.enabled = true;
+        image.enabled = true;
     }
     private void FixedUpdate() {
         enemy_obj.anchoredPosition = Vector3.MoveTowards(
@@ -39,6 +46,11 @@ public class Enemy2 : MonoBehaviour
         hit.color = new Color(1,1,1,1);
     }
 
+    void Obj_False()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.tag == "Bullet")
@@ -48,14 +60,20 @@ public class Enemy2 : MonoBehaviour
             Invoke("Hit",0.05f);   
             if(cnt == 10)
             {
-                gameObject.SetActive(false);
+                boxCollider2D.enabled = false;
+                image.enabled = false;
+                mobDie.SetActive(true);
+                Invoke("Obj_False",0.5f);
                 GameManager.score_ += 1000;
                 isDead = true;
             }
         }
         if(other.tag == "bomb")
         {
-            gameObject.SetActive(false);
+            boxCollider2D.enabled = false;
+            image.enabled = false;
+            mobDie.SetActive(true);
+            Invoke("Obj_False",0.5f);
             GameManager.score_ += 1000;
             isDead = true;
         }

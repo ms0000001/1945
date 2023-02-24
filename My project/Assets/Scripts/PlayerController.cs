@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject playerDie;
+    CapsuleCollider2D capsuleCollider2D;
+    Image image;
+
+
+
     public GameObject boomer;
     public Image hpbar;
     private Rigidbody2D playerRigidbody;
@@ -28,6 +34,10 @@ public class PlayerController : MonoBehaviour
         bombCnt = 3;
         isDead = false;
         playerRigidbody = GetComponent<Rigidbody2D>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        image = GetComponent<Image>();
+        capsuleCollider2D.enabled = true;
+        image.enabled = true;
     }
 
     void Update()
@@ -66,7 +76,8 @@ public class PlayerController : MonoBehaviour
     void AirStrike()
     {
         gameObject.tag = "Player";
-        if(Boomer.isFlying == false)
+             
+        if(Boomer.isFlying == false && Time.timeScale == 1)
         {
             if(0 < bombCnt && bombCnt <= maxBomb)
             {
@@ -88,10 +99,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Obj_False()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void Die()
     {
+        capsuleCollider2D.enabled = false;
+        image.enabled = false;
+        playerDie.SetActive(true);
+        Invoke("Obj_False",0.5f);
         isDead = true;
-        gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

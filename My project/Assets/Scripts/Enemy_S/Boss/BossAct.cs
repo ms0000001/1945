@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class BossAct : MonoBehaviour
 {
+    public GameObject mobDie;
+    BoxCollider2D boxCollider2D;    
     Image hit;
+    Image image;
     public static bool isDead = false;
     public RectTransform pos5;
     private RectTransform enemy_obj = default;
@@ -22,8 +25,14 @@ public class BossAct : MonoBehaviour
         timer = 0;
         setTime = 12f;
         hit = GetComponent<Image>();
+        image = GetComponent<Image>();
         enemy_obj = gameObject.GetComponent<RectTransform>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        isDead = false;
+        image.enabled = true;
+        boxCollider2D.enabled = true;
     }
+
     private void FixedUpdate() {
         enemy_obj.anchoredPosition = Vector3.MoveTowards(
             enemy_obj.anchoredPosition,
@@ -46,6 +55,11 @@ public class BossAct : MonoBehaviour
         hit.color = new Color(1,1,1,1);
     }
 
+    void BossDestroy()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.tag == "Bullet")
@@ -57,9 +71,12 @@ public class BossAct : MonoBehaviour
             {
                 sp_.SetActive(true);
             }            
-            if(cnt > 100)
+            if(cnt >= 100)
             {
-                Destroy(gameObject);
+                boxCollider2D.enabled = false;
+                image.enabled = false;
+                mobDie.SetActive(true);
+                Invoke("BossDestroy",0.5f);
                 GameManager.score_ += 10000;
                 isDead = true;
             }
@@ -69,9 +86,12 @@ public class BossAct : MonoBehaviour
             cnt += 40;
             hit.color = new Color(1,0,0,1);
             Invoke("Hit",1.5f);
-            if(cnt > 100)
+            if(cnt >= 100)
             {
-                Destroy(gameObject);
+                boxCollider2D.enabled = false;
+                image.enabled = false;
+                mobDie.SetActive(true);
+                Invoke("BossDestroy",0.5f);
                 GameManager.score_ += 10000;
                 isDead = true;
             }

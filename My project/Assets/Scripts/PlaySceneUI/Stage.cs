@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
+    public GameObject stageClaerOff;
     float timer;
     float setTime;
+    
     void Start()
     {
+        stageClaerOff.SetActive(false);
         timer = 0;
         setTime = 3f;
     }

@@ -39,16 +39,19 @@ public class BossBulletpool : MonoBehaviour
         }
     }
     void Shoot()
-    {        
-        if(timer>setTime)
+    {      
+        if(Boomer.isFlying == false)
         {
-            gameObjects[pivot].SetActive(true);
-            Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
-            rigid.AddForce(new Vector2(0,-2.5f),ForceMode2D.Impulse);
-            gameObjects[pivot].transform.position = transform.position;
-            timer = 0;
-            pivot++;
-            if (pivot == 40) pivot = 0;
-        }        
+            if(timer>setTime)
+            {
+                gameObjects[pivot].SetActive(true);
+                Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
+                rigid.AddForce(new Vector2(0,-2.5f),ForceMode2D.Impulse);
+                gameObjects[pivot].transform.position = transform.position;
+                timer = 0;
+                pivot++;
+                if(pivot == 40) pivot = 0;
+            }
+        }  
     }
 }
