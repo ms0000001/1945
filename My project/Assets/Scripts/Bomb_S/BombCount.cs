@@ -9,6 +9,27 @@ public class BombCount : MonoBehaviour
     public GameObject bomb3;
     void Update()
     {
+        Count();
+    }
+
+    void Count()
+    {
+        if(PlayerController.isDead == false)
+        {
+        switch(PlayerController.bombCnt)
+                {
+                    case 3:
+                    bomb1.SetActive(true);
+                    break;
+                    case 2:
+                    bomb2.SetActive(true);
+                    break;
+                    case 1:
+                    bomb3.SetActive(true);
+                    break;
+                    case 0:
+                    break;
+                }
         if(Boomer.isFlying == false && Time.timeScale == 1)
         {
             if(Input.GetKeyDown(KeyCode.B))
@@ -29,5 +50,7 @@ public class BombCount : MonoBehaviour
                 }
             }
         }
-    }
+        }
+
+    }    
 }

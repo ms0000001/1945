@@ -16,7 +16,8 @@ public class BossAppear : MonoBehaviour
     {
         if(BossAct.isDead == false)
         {
-            if(Enemy.isDead == true&&Enemy2.isDead ==true)
+            if(Enemy.isDead == true&&Enemy2.isDead ==true
+            &&Enemy3.isDead == true)
             {
                 boss.SetActive(true);
             }

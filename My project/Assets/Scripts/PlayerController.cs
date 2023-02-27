@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider2D capsuleCollider2D;
     Image image;
 
-
+    public GameObject reinforce1;
+    public GameObject reinforce2;
+    int maxReinforce = 2;
+    int curReinforce = 0;
 
     public GameObject boomer;
     public Image hpbar;
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        curReinforce = 0;
         bombCnt = 3;
         isDead = false;
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -42,8 +46,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Move();
-        AirStrike();
+        if(isDead ==false)
+        {
+            Move();
+            AirStrike();
+        }
     }
 
     void Move()
@@ -107,10 +114,20 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         capsuleCollider2D.enabled = false;
+        reinforce1.SetActive(false);
+        reinforce2.SetActive(false);
         image.enabled = false;
         playerDie.SetActive(true);
         Invoke("Obj_False",0.5f);
         isDead = true;
+    }
+
+    void ReinfoeceCnt()
+    {
+        if(curReinforce > maxReinforce)
+        {
+            curReinforce = maxReinforce;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -142,7 +159,23 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
+        if(other.tag == "ItemBullet")
+        {
+            curReinforce++;
+            if(curReinforce == 1)
+            {
+                reinforce1.SetActive(true);
+            }
+            if(curReinforce == 2)
+            {
+                reinforce2.SetActive(true);
+            }
+        }
+
+        if(other.tag == "Enemy")
+            {
+                Die();
+            }
     }
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Net"){

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy2 : MonoBehaviour
+public class Enemy3 : MonoBehaviour
 {
     BoxCollider2D boxCollider2D;
     Image image;
@@ -59,7 +59,6 @@ public class Enemy2 : MonoBehaviour
     void CreateItem()
     {
         int randomItem = Random.Range(1,4);
-        Debug.Log(randomItem);
         switch(randomItem)
         {
             case 1:
@@ -115,5 +114,5 @@ public class Enemy2 : MonoBehaviour
             GameManager.score_ += 1000;
             isDead = true;
         }
-    }  
+    }
 }

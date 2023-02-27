@@ -9,17 +9,19 @@ public class Boom : MonoBehaviour
 
     void Update()
     {
-        if(Boomer.isFlying == false && Time.timeScale == 1)
+        if(PlayerController.isDead == false)
         {
-            if(PlayerController.bombCnt > 0)
+            if(Boomer.isFlying == false && Time.timeScale == 1)
             {
-                if(Input.GetKeyDown(KeyCode.B))
+                if(PlayerController.bombCnt > 0)
                 {
-                    Invoke("TurnOn",1.5f);
+                    if(Input.GetKeyDown(KeyCode.B))
+                    {
+                        Invoke("TurnOn",1.5f);
+                    }
                 }
             }
-        }
-    
+        }    
     }
 
     void TurnOn()

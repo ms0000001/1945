@@ -16,6 +16,11 @@ public class EnemyBullet : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+        if(other.tag == "BulletNet")
+        {
+            gameObject.SetActive(false);
+        }
+
         if(other.tag == "bomb")
         {
             gameObject.SetActive(false);

@@ -55,6 +55,15 @@ public class Enemy : MonoBehaviour
             GameManager.score_ += 400;
             isDead = true;
         }
+        if(other.tag == "Player")
+        {
+            boxCollider2D.enabled = false;
+            image.enabled = false;
+            mobDie.SetActive(true);
+            Invoke("Obj_False",0.5f);
+            GameManager.score_ += 400;
+            isDead = true;
+        }
         if(other.tag == "EnemyNet")
         {
             gameObject.SetActive(false);

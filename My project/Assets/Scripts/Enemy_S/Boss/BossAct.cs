@@ -71,7 +71,7 @@ public class BossAct : MonoBehaviour
             {
                 sp_.SetActive(true);
             }            
-            if(cnt >= 100)
+            if(cnt >= 700)
             {
                 boxCollider2D.enabled = false;
                 image.enabled = false;
@@ -83,10 +83,10 @@ public class BossAct : MonoBehaviour
         }
         if(other.tag == "bomb")
         {
-            cnt += 40;
+            cnt += 30;
             hit.color = new Color(1,0,0,1);
             Invoke("Hit",1.5f);
-            if(cnt >= 100)
+            if(cnt >= 700)
             {
                 boxCollider2D.enabled = false;
                 image.enabled = false;

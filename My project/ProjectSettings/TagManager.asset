@@ -13,11 +13,13 @@ TagManager:
   - bomb
   - BoomerNet
   - Hide
+  - Boomer
+  - ItemBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
   - Boss

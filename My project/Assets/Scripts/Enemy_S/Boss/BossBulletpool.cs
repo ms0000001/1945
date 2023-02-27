@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBulletpool : MonoBehaviour
 {
+    Transform target;
     public GameObject bulletPrefab;
     public GameObject[] gameObjects;
     public GameObject parents;
@@ -13,11 +14,13 @@ public class BossBulletpool : MonoBehaviour
     float setTime;
     void Start()
     {
+        target = FindObjectOfType<PlayerController>().transform;
+
         timer = 0;
         setTime = 0.6f;
 
-        gameObjects = new GameObject[50];
-        for(int i=0; i<50; i++){
+        gameObjects = new GameObject[30];
+        for(int i=0; i<30; i++){
             GameObject bullet = Instantiate(bulletPrefab);
             gameObjects[i] = bullet;
             bullet.transform.SetParent(parents.transform.parent);
@@ -29,11 +32,11 @@ public class BossBulletpool : MonoBehaviour
     {
         timer += Time.deltaTime;
         Shoot();
-        if(BossAct.cnt>60&&BossAct.cnt<85)
+        if(BossAct.cnt>200&&BossAct.cnt<500)
         {
             setTime =0.45f;
         }
-        if(BossAct.cnt>85)
+        if(BossAct.cnt>500&&BossAct.cnt<701)
         {
             setTime =0.3f;
         }
@@ -46,11 +49,12 @@ public class BossBulletpool : MonoBehaviour
             {
                 gameObjects[pivot].SetActive(true);
                 Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
-                rigid.AddForce(new Vector2(0,-2.5f),ForceMode2D.Impulse);
+                rigid.AddForce(target.transform.position,ForceMode2D.Impulse);
+                //rigid.AddForce(new Vector2(0,-2.5f),ForceMode2D.Impulse);
                 gameObjects[pivot].transform.position = transform.position;
                 timer = 0;
                 pivot++;
-                if(pivot == 40) pivot = 0;
+                if(pivot == 30) pivot = 0;
             }
         }  
     }
