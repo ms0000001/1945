@@ -32,11 +32,11 @@ public class BossBulletpool : MonoBehaviour
     {
         timer += Time.deltaTime;
         Shoot();
-        if(BossAct.cnt>100&&BossAct.cnt<300)
+        if(BossAct.cnt>200&&BossAct.cnt<500)
         {
             setTime =0.45f;
         }
-        if(BossAct.cnt>300&&BossAct.cnt<01)
+        if(BossAct.cnt>500&&BossAct.cnt<701)
         {
             setTime =0.3f;
         }
@@ -50,7 +50,6 @@ public class BossBulletpool : MonoBehaviour
                 gameObjects[pivot].SetActive(true);
                 Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
                 rigid.AddForce(target.transform.position,ForceMode2D.Impulse);
-                //rigid.AddForce(new Vector2(0,-2.5f),ForceMode2D.Impulse);
                 gameObjects[pivot].transform.position = transform.position;
                 timer = 0;
                 pivot++;

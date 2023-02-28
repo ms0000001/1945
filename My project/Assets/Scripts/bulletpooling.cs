@@ -32,7 +32,8 @@ public class bulletpooling : MonoBehaviour
     {
         if(GameManager.isPause==false)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Space)
+            || Input.GetKeyUp(KeyCode.Space))
             {
                 shootAudio.Play();
                 gameObjects[pivot].SetActive(true);

@@ -71,7 +71,7 @@ public class BossAct : MonoBehaviour
             {
                 sp_.SetActive(true);
             }            
-            if(cnt == 500)
+            if(cnt == 700)
             {
                 circleCollider2D.enabled = false;
                 image.enabled = false;
@@ -86,7 +86,7 @@ public class BossAct : MonoBehaviour
             cnt += 40;
             hit.color = new Color(1,0,0,1);
             Invoke("Hit",1.5f);
-            if(cnt >= 500)
+            if(cnt >= 700)
             {
                 circleCollider2D.enabled = false;
                 image.enabled = false;
