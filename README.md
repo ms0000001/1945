@@ -9,5 +9,5 @@
 2023.02.27 / v1.0.0 / Add Item / Version 1
 2023.02.28 / v1.0.1 / Add Sound / Complete
 2023.02.28 / v1.0.2 / Add Exit In Tittle
-2023.02.28 / v1.0.2 / Balance Regulate
+2023.02.28 / v1.0.3 / Balance Regulate
 2023.02.28 / v1.1.0 / Polishing 1
