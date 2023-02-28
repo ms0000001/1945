@@ -6,6 +6,10 @@ public class AntKeyToStart : MonoBehaviour
 {
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            GFunc.QuitThisGame();
+        }
         if(Input.anyKeyDown)
         {
             Invoke("Delay",3f);
