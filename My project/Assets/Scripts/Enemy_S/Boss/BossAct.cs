@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BossAct : MonoBehaviour
 {
     public GameObject mobDie;
-    BoxCollider2D boxCollider2D;    
+    CircleCollider2D circleCollider2D;    
     Image hit;
     Image image;
     public static bool isDead = false;
@@ -27,10 +27,10 @@ public class BossAct : MonoBehaviour
         hit = GetComponent<Image>();
         image = GetComponent<Image>();
         enemy_obj = gameObject.GetComponent<RectTransform>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
         isDead = false;
         image.enabled = true;
-        boxCollider2D.enabled = true;
+        circleCollider2D.enabled = true;
     }
 
     private void FixedUpdate() {
@@ -71,9 +71,9 @@ public class BossAct : MonoBehaviour
             {
                 sp_.SetActive(true);
             }            
-            if(cnt >= 700)
+            if(cnt == 700)
             {
-                boxCollider2D.enabled = false;
+                circleCollider2D.enabled = false;
                 image.enabled = false;
                 mobDie.SetActive(true);
                 Invoke("BossDestroy",0.5f);
@@ -88,7 +88,7 @@ public class BossAct : MonoBehaviour
             Invoke("Hit",1.5f);
             if(cnt >= 700)
             {
-                boxCollider2D.enabled = false;
+                circleCollider2D.enabled = false;
                 image.enabled = false;
                 mobDie.SetActive(true);
                 Invoke("BossDestroy",0.5f);

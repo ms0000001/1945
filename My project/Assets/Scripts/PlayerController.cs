@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    AudioSource playerAudio;
+
     public GameObject playerDie;
     CapsuleCollider2D capsuleCollider2D;
     Image image;
@@ -13,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject reinforce2;
     int maxReinforce = 2;
     int curReinforce = 0;
+    bool debugMode = false;
 
     public GameObject boomer;
     public Image hpbar;
@@ -34,11 +37,13 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        debugMode = false;
         curReinforce = 0;
         bombCnt = 3;
         isDead = false;
         playerRigidbody = GetComponent<Rigidbody2D>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        playerAudio = GetComponent<AudioSource>();
         image = GetComponent<Image>();
         capsuleCollider2D.enabled = true;
         image.enabled = true;
@@ -50,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             Move();
             AirStrike();
+            DebugMode();
         }
     }
 
@@ -113,13 +119,20 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
-        capsuleCollider2D.enabled = false;
-        reinforce1.SetActive(false);
-        reinforce2.SetActive(false);
-        image.enabled = false;
-        playerDie.SetActive(true);
-        Invoke("Obj_False",0.5f);
-        isDead = true;
+        if(debugMode == false)
+        {
+            reinforce1.SetActive(false);
+            reinforce2.SetActive(false);
+
+            capsuleCollider2D.enabled = false;
+            image.enabled = false;
+            playerDie.SetActive(true);
+
+            playerAudio.Play();
+
+            Invoke("Obj_False",0.5f);
+            isDead = true;
+        }
     }
 
     void ReinfoeceCnt()
@@ -127,6 +140,18 @@ public class PlayerController : MonoBehaviour
         if(curReinforce > maxReinforce)
         {
             curReinforce = maxReinforce;
+        }
+    }
+
+    void DebugMode()
+    {
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            debugMode = true;          
+            reinforce1.SetActive(true);
+            reinforce2.SetActive(true);
+            maxBomb = 999;
+            bombCnt = 999;  
         }
     }
 

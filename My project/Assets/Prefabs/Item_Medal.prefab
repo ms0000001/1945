@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4471643030775556784}
   - component: {fileID: 4471643030775556790}
   - component: {fileID: 4471643030775556791}
-  m_Layer: 4
+  m_Layer: 3
   m_Name: Item_Medal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

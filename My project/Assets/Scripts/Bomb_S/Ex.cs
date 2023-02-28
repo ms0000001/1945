@@ -71,17 +71,14 @@ public class Ex : MonoBehaviour
             explose4.SetActive(false);
 
             
-        }
-        if(setTime4>timer&&timer>setTime3)
+        }        
+        if(setTime5>timer&&timer>setTime4)
         {
             explose12.SetActive(true);
             explose13.SetActive(true);
             explose14.SetActive(true);
             explose15.SetActive(true);
 
-        }
-        if(setTime5>timer&&timer>setTime4)
-        {
             explose5.SetActive(false);
             explose6.SetActive(false);
             explose7.SetActive(false);

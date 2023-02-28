@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    AudioSource playerAudio;
+
     BoxCollider2D boxCollider2D;
     Image image;
     public GameObject mobDie;
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour
         enemy_obj = gameObject.GetComponent<RectTransform>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         image = GetComponent<Image>();
+        playerAudio = GetComponent<AudioSource>();
         boxCollider2D.enabled = true;
         image.enabled = true;
     }
@@ -42,6 +45,7 @@ public class Enemy : MonoBehaviour
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
+            playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
             isDead = true;
@@ -51,6 +55,7 @@ public class Enemy : MonoBehaviour
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
+            playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
             isDead = true;
@@ -60,6 +65,7 @@ public class Enemy : MonoBehaviour
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
+            playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
             isDead = true;

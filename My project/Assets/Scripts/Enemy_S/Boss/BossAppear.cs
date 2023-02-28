@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class BossAppear : MonoBehaviour
 {
-    
-    public GameObject boss;
-
-    void Start()
-    {
-        
-    }
+    public GameObject boss;    
 
     void Update()
     {
@@ -22,5 +16,5 @@ public class BossAppear : MonoBehaviour
                 boss.SetActive(true);
             }
         }
-    }
+    }    
 }

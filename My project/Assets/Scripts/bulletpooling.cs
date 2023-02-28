@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class bulletpooling : MonoBehaviour
 {
+    AudioSource shootAudio;
+
     public GameObject bulletPrefab;
     public GameObject[] gameObjects;
     public Transform point;
@@ -11,6 +13,8 @@ public class bulletpooling : MonoBehaviour
     private int pivot = 0;
     void Start()
     {
+        shootAudio = GetComponent<AudioSource>();
+
         gameObjects = new GameObject[20];
         for(int i=0; i<20; i++){
             GameObject bullet = Instantiate(bulletPrefab);
@@ -30,6 +34,7 @@ public class bulletpooling : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                shootAudio.Play();
                 gameObjects[pivot].SetActive(true);
                 Rigidbody2D rigid = gameObjects[pivot].GetComponent<Rigidbody2D>();
                 rigid.AddForce(Vector2.up*10,ForceMode2D.Impulse);
