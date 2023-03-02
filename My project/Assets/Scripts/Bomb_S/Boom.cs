@@ -9,6 +9,7 @@ public class Boom : MonoBehaviour
 
     void Update()
     {
+        //폭발 애니메이션 활성화
         if(PlayerController.isDead == false)
         {
             if(Boomer.isFlying == false && Time.timeScale == 1)
@@ -17,6 +18,7 @@ public class Boom : MonoBehaviour
                 {
                     if(Input.GetKeyDown(KeyCode.B))
                     {
+                        //활성화 딜레이
                         Invoke("TurnOn",1.5f);
                     }
                 }

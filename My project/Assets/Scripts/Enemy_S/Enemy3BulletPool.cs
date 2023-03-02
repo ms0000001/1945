@@ -15,11 +15,13 @@ public class Enemy3BulletPool : MonoBehaviour
     float setTime;
     void Start()
     {
+        //플레이어 조준 설정
         target = FindObjectOfType<PlayerController>().transform;
 
         timer = 0;
         setTime = 0.3f;
 
+        //탄환 생성
         gameObjects = new GameObject[30];
         for(int i=0; i<30; i++){
             GameObject bullet = Instantiate(bulletPrefab);
@@ -34,8 +36,11 @@ public class Enemy3BulletPool : MonoBehaviour
         timer += Time.deltaTime;
         Shoot();
     }
+
+    //사격
     void Shoot()
     {
+        //사격 딜레이
         if(timer>setTime)
         {
             gameObjects[pivot].SetActive(true);

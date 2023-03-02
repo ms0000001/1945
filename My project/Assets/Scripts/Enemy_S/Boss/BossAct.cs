@@ -33,6 +33,7 @@ public class BossAct : MonoBehaviour
         circleCollider2D.enabled = true;
     }
 
+    //이동
     private void FixedUpdate() {
         enemy_obj.anchoredPosition = Vector3.MoveTowards(
             enemy_obj.anchoredPosition,
@@ -50,18 +51,20 @@ public class BossAct : MonoBehaviour
         }
     }
 
+    //피격 시 색상 깜박임
     void Hit()
     {
         hit.color = new Color(1,1,1,1);
     }
 
+    //사망 시
     void BossDestroy()
     {
         gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        
+        //{ 피격 시
         if(other.tag == "Bullet")
         {
             cnt++;
@@ -70,9 +73,11 @@ public class BossAct : MonoBehaviour
             if(cnt == 1)
             {
                 sp_.SetActive(true);
-            }            
+            }
+            //보스 체력            
             if(cnt == 700)
             {
+                //사망
                 circleCollider2D.enabled = false;
                 image.enabled = false;
                 mobDie.SetActive(true);
@@ -86,8 +91,10 @@ public class BossAct : MonoBehaviour
             cnt += 40;
             hit.color = new Color(1,0,0,1);
             Invoke("Hit",1.5f);
+            //보스 체력
             if(cnt >= 700)
             {
+                //사망
                 circleCollider2D.enabled = false;
                 image.enabled = false;
                 mobDie.SetActive(true);
@@ -96,6 +103,6 @@ public class BossAct : MonoBehaviour
                 isDead = true;
             }
         }
-        
+        //} 피격 시
     }  
 }

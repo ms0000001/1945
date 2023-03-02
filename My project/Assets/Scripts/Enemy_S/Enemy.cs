@@ -26,12 +26,12 @@ public class Enemy : MonoBehaviour
         image.enabled = true;
     }
 
+    //적 이동
     private void FixedUpdate() {
         enemy_obj.anchoredPosition = Vector3.MoveTowards(
             enemy_obj.anchoredPosition,
-            pos1.anchoredPosition,Time.deltaTime*speed*80);        
-        
-    }
+            pos1.anchoredPosition,Time.deltaTime*speed*80);
+    }    
 
     void Obj_False()
     {
@@ -39,41 +39,43 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        
+        //피격 시
         if(other.tag == "Bullet")
         {
+            isDead = true;
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
             playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
-            isDead = true;
         }
         if(other.tag == "bomb")
         {
+            isDead = true;
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
             playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
-            isDead = true;
         }
+        //플레이어와 충돌 시
         if(other.tag == "Player")
         {
+            isDead = true;
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
             playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 400;
-            isDead = true;
         }
+        //맵 밖으로 이동 시
         if(other.tag == "EnemyNet")
         {
-            gameObject.SetActive(false);
             isDead = true;
+            gameObject.SetActive(false);
         }
     }    
 }

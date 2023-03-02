@@ -43,6 +43,7 @@ public class Ex : MonoBehaviour
 
     void Update()
     {
+        //폭발 애니메이션
         timer += Time.deltaTime;
         if(setTime2>timer&&timer>setTime1)
         {

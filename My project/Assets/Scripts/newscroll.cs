@@ -15,11 +15,10 @@ public class newscroll : MonoBehaviour
 
     private void Update()
     {
-        // Background move to moveDirection, speed = moveSpeed;
+        // 배경 스크롤
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
-
-        // 배경이 설정된 범위를 벗어나면 위치 재설정
+        // 배경 위치 재설정
         if(transform.position.y <= -scrollRange)
         {
             transform.position = target.position + Vector3.up * scrollRange;

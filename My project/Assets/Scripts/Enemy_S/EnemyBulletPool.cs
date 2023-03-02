@@ -16,7 +16,7 @@ public class EnemyBulletPool : MonoBehaviour
     {
         timer = 0;
         setTime = 1f;
-
+        //탄환 생성
         gameObjects = new GameObject[20];
         for(int i=0; i<20; i++){
             GameObject bullet = Instantiate(bulletPrefab);
@@ -31,8 +31,11 @@ public class EnemyBulletPool : MonoBehaviour
         timer += Time.deltaTime;
         Shoot();
     }
+    
+    //사격
     void Shoot()
     {
+        //사격 딜레이
         if(timer>setTime)
         {
             gameObjects[pivot].SetActive(true);

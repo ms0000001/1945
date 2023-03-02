@@ -15,6 +15,7 @@ public class bulletpooling : MonoBehaviour
     {
         shootAudio = GetComponent<AudioSource>();
 
+        //탄환 생성
         gameObjects = new GameObject[20];
         for(int i=0; i<20; i++){
             GameObject bullet = Instantiate(bulletPrefab);
@@ -30,8 +31,10 @@ public class bulletpooling : MonoBehaviour
     }
     void Shoot()
     {
+        //일시정지 시 조작 불가
         if(GameManager.isPause==false)
         {
+            //탄환 발사
             if(Input.GetKeyDown(KeyCode.Space)
             || Input.GetKeyUp(KeyCode.Space))
             {

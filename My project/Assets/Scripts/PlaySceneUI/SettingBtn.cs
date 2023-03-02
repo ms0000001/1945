@@ -13,6 +13,7 @@ public class SettingBtn : MonoBehaviour
 
     void Update()
     {
+        //키 입력 시 세팅창 비활성화
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             setmenu.SetActive(false);
@@ -20,6 +21,7 @@ public class SettingBtn : MonoBehaviour
         }
     }
 
+    //세팅버튼 클릭 시 창 활성화
     public void OnSettingBtn()
     {
         setmenu.SetActive(true);

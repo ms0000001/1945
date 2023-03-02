@@ -34,6 +34,8 @@ public class Enemy2 : MonoBehaviour
         boxCollider2D.enabled = true;
         image.enabled = true;
     }
+
+    //적 이동
     private void FixedUpdate() {
         enemy_obj.anchoredPosition = Vector3.MoveTowards(
             enemy_obj.anchoredPosition,
@@ -43,12 +45,24 @@ public class Enemy2 : MonoBehaviour
 
     void Update()
     {
+        ShootPointOn();
+    }
+
+    //피격 시 사격 시작
+    void ShootPointOn()
+    {
         if(cnt > 0)
         {
             shoot_P.SetActive(true);
         }
+        //사망 시 비활성화
+        if(isDead == true)
+        {
+            shoot_P.SetActive(false);
+        }
     }
 
+    //피격 시 색상 깜박임
     void Hit()
     {
         hit.color = new Color(1,1,1,1);
@@ -59,6 +73,7 @@ public class Enemy2 : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //{ 사망 시 랜덤 아이템 드롭
     void CreateItem()
     {
         int randomItem = Random.Range(1,4);
@@ -78,9 +93,10 @@ public class Enemy2 : MonoBehaviour
             break;
         }
     }
+    //} 사망 시 랜덤 아이템 드롭
 
     private void OnTriggerEnter2D(Collider2D other) {
-        
+        //피격 시
         if(other.tag == "Bullet")
         {
             cnt++;
@@ -88,6 +104,7 @@ public class Enemy2 : MonoBehaviour
             Invoke("Hit",0.05f);   
             if(cnt == 10)
             {
+                isDead = true;
                 boxCollider2D.enabled = false;
                 image.enabled = false;
                 mobDie.SetActive(true);
@@ -95,11 +112,11 @@ public class Enemy2 : MonoBehaviour
                 playerAudio.Play();
                 Invoke("Obj_False",0.5f);
                 GameManager.score_ += 1000;
-                isDead = true;
             }
         }
         if(other.tag == "bomb")
         {
+            isDead = true;
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
@@ -107,10 +124,11 @@ public class Enemy2 : MonoBehaviour
             playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 1000;
-            isDead = true;
         }
+        //플레이어와 충돌 시
         if(other.tag == "Player")
         {
+            isDead = true;
             boxCollider2D.enabled = false;
             image.enabled = false;
             mobDie.SetActive(true);
@@ -118,7 +136,6 @@ public class Enemy2 : MonoBehaviour
             playerAudio.Play();
             Invoke("Obj_False",0.5f);
             GameManager.score_ += 1000;
-            isDead = true;
         }
     }  
 }

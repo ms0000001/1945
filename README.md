@@ -11,3 +11,4 @@
 2023.02.28 / v1.0.2 / Add Exit In Tittle
 2023.02.28 / v1.0.3 / Balance Regulate
 2023.02.28 / v1.1.0 / Polishing 1
+2023.03.02 / v1.1.1 / Final Check

@@ -8,8 +8,11 @@ public class Bullet_Item : MonoBehaviour
     float randomX,randomY;
     void Start()
     {
+        //충돌 무시
         Physics2D.IgnoreLayerCollision(3,6,true);
-        Physics2D.IgnoreLayerCollision(3,3,true);        
+        Physics2D.IgnoreLayerCollision(3,3,true); 
+
+        //랜덤 이동       
         randomX = Random.Range(-1.0f, 2.0f);
         randomY = -2f;
 
@@ -18,6 +21,7 @@ public class Bullet_Item : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
+        //플레이어와 충돌 시
         if(other.tag == "Player"||other.tag == "Hide")
         {
             GameManager.score_ += 1000;            

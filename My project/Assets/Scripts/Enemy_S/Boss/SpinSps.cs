@@ -13,6 +13,7 @@ public class SpinSps : MonoBehaviour
 
     void Update()
     {   
+        //공격 패턴
         if(BossAct.cnt < 20)
         {
             transform.Rotate(new Vector3 (0,0,3f));

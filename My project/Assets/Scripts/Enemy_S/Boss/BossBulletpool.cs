@@ -14,11 +14,13 @@ public class BossBulletpool : MonoBehaviour
     float setTime;
     void Start()
     {
+        //플레이어 목표 설정
         target = FindObjectOfType<PlayerController>().transform;
 
         timer = 0;
         setTime = 0.6f;
 
+        //탄환 생성
         gameObjects = new GameObject[30];
         for(int i=0; i<30; i++){
             GameObject bullet = Instantiate(bulletPrefab);
@@ -32,6 +34,10 @@ public class BossBulletpool : MonoBehaviour
     {
         timer += Time.deltaTime;
         Shoot();
+    }
+    void Shoot()
+    {
+        //보스 공격 딜레이 조절
         if(BossAct.cnt>200&&BossAct.cnt<500)
         {
             setTime =0.45f;
@@ -40,11 +46,11 @@ public class BossBulletpool : MonoBehaviour
         {
             setTime =0.3f;
         }
-    }
-    void Shoot()
-    {      
+
+        //사격
         if(Boomer.isFlying == false)
         {
+            //사격 딜레이
             if(timer>setTime)
             {
                 gameObjects[pivot].SetActive(true);

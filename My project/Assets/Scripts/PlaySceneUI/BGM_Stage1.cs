@@ -19,11 +19,13 @@ public class BGM_Stage1 : MonoBehaviour
 
     private void Update() 
     {
+        //보스 출현 배경음 재생
         if(Enemy3.isDead == true)
         {
             BGM.Stop();
             bossBGM.SetActive(true);
         }
+        //클리어 배경음 재생
         if(BossAct.isDead == true)
         {
             bossBGM.SetActive(false);
@@ -36,8 +38,10 @@ public class BGM_Stage1 : MonoBehaviour
         clearBGM.SetActive(true);
     }
 
+    //{ 음량 조절
     public void OnPlusBtn()
     {
+        //볼륨 +
         BGM.volume += 0.3f;
         if(BGM.volume == 1)
         {
@@ -55,6 +59,7 @@ public class BGM_Stage1 : MonoBehaviour
 
     public void OnMinusBtn()
     {
+        //볼륨 -
         BGM.volume -= 0.3f;
         if(BGM.volume < 1)
         {
@@ -72,6 +77,7 @@ public class BGM_Stage1 : MonoBehaviour
 
     public void OnMute()
     {
+        //음소거
         isMute =! isMute;
 
         if(isMute == true)
@@ -89,4 +95,5 @@ public class BGM_Stage1 : MonoBehaviour
             bar1.SetActive(true);
         }
     }
+    //} 음량 조절
 }

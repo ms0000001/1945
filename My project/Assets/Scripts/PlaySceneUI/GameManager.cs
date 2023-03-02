@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour
         Score();
         PlayerDie();
         StageClear();
+        //키 입력 시 일시정지
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
         }
     }
-
+    //점수 표시
     void Score()
     {        
         if(!isGameover)
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //플레이어 사망 시 게임오버 표시
     void PlayerDie()
     {
         if(PlayerController.isDead == true)
@@ -60,6 +62,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    //일시정지
     void Pause()
     {
         if(SettingBtn.isSetMenuOpen == false)
@@ -67,23 +71,29 @@ public class GameManager : MonoBehaviour
             isPause =!isPause;
             if(isPause == true){
                 Time.timeScale = 0;
+                //메뉴 열림
                 menu.SetActive(true);
             }
             else
             {
-                Time.timeScale = 1;  
+                Time.timeScale = 1; 
+                //메뉴 닫힘 
                 menu.SetActive(false);
             }
         }
     }
 
+    //스테이지 클리어 시
     void StageClear()
     {
+        //클리어 조건
         if(BossAct.isDead == true)
         {
+            //클리어 UI 활성화
             stageClear.SetActive(true); 
             if(isPause == false)
             {
+                //키 입력 시 타이틀로 이동
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
                     stageClear.SetActive(false);  

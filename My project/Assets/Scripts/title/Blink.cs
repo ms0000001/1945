@@ -16,7 +16,7 @@ public class Blink : MonoBehaviour
         setTime2 = 1f;
     }
     void Update() {
-
+        //깜박임
         timer += Time.deltaTime;
         if(timer>setTime1)
         {
